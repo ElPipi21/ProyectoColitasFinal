@@ -1,11 +1,13 @@
 package com.example.proyectocolitas;
 
-public class Datos {
+import java.io.Serializable;
+
+public class Datos implements Serializable {
 
 
-    private Integer Imagen;
-    private String Titulo;
-    private Integer Id;
+    public Integer Imagen;
+    public String Titulo;
+    public Integer Id;
 
     public Integer getImagen() {
         return Imagen;

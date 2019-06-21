@@ -1,9 +1,13 @@
 package com.example.proyectocolitas;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        grilla= (GridView) findViewById(R.id.grilla);
+        grilla=  findViewById(R.id.grilla);
 
         ArrayList<Datos> datos= new ArrayList<Datos>();
         datos.add(new Datos(R.drawable.mascota1, "Firulais", 1));
@@ -27,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         Adaptador miadaptador = new Adaptador(getApplicationContext(), datos);
         grilla.setAdapter(miadaptador);
-
+        grilla.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Datos obj  = (Datos) parent.getItemAtPosition(position);
+                Intent paso = new Intent(getApplicationContext(), DetalleActivity.class);
+                paso.putExtra("Objeto",  obj);
+                startActivity(paso);
+            }
+        });
     }
 }
