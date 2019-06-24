@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 Datos obj  = (Datos) parent.getItemAtPosition(position);
                 Intent paso = new Intent(getApplicationContext(), DetalleActivity.class);
                 paso.putExtra("Objeto",  obj);
+
+
                 startActivity(paso);
             }
         });
